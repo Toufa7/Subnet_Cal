@@ -38,15 +38,19 @@ def subnet_calc(ip, bits):
     network = {}
     ip = list(map(int, ip.split('.')))
     binary(ip) # convert ip to binary
-    network['No. of Hosts/Subnet'] = (2 ** (32 - bits)) - 2
-    network['Number of Subnets'] = 2 ** bits
     if bits > 30:
-        network['host range'] = '-'
+        network['min host'] = '-'
+        network['max host'] = '-'
         network['broadcast'] = '-'
         network['Wildcard Mask'] = '-'
         network['CIDR Notation'] = '-'
+        network['No. of Hosts/Subnet'] = '-'
+        network['Number of Subnets'] = '-'
         return network
-    network['host range'] = str(decimal(subnet(ip, bits))).replace("[", "").replace(", ", ".").replace("]", "") + ' - ' + str(decimal(subnet(ip, bits, '1', '0'))).replace("[", "").replace(", ", ".").replace("]", "")
+    network['min host'] = str(decimal(subnet(ip, bits))).replace("[", "").replace(", ", ".").replace("]", "")
+    network['max host'] = str(decimal(subnet(ip, bits, '1', '0'))).replace("[", "").replace(", ", ".").replace("]", "")
+    network['No. of Hosts/Subnet'] = (2 ** (32 - bits)) - 2
+    network['Number of Subnets'] = 2 ** bits
     network['broadcast'] = str(decimal(subnet(ip, bits, '1', '1'))).replace("[", "").replace(", ", ".").replace("]", "")
     network['Wildcard Mask'] = masks.wildcard_mask[str(bits)]
     network['CIDR Notation' ] = str(decimal(subnet(ip, bits, '0', '0'))).replace("[", "").replace(", ", ".").replace("]", "") + '/' + str(bits)
