@@ -28,8 +28,14 @@ def     generate_subnet():
         ip = str(ip_add.get()) 
         bits  = int(masks.subnet_masks[(clicked.get())])
         output = subnet_cal.subnet_calc(ip, bits)
-        nbr_of_subnets.config(text=output['host range'])
-        text_entry.config(text=output["broadcast"])
+        hosts_subnet.config(text=output['No. of Hosts/Subnet'])
+        nbr_of_subnets.config(text=output['Number of Subnets'])
+        host_range.config(text=output['host range'])
+        broadcast.config(text=output['broadcast'])
+        wildcard_mask.config(text=output['Wildcard Mask'])
+        cidr_notation.config(text=output['CIDR Notation'])
+
+
         # text_entry('1.0', tk.END)
         # text_entry(tk.END, output['host range'])
     
@@ -70,10 +76,20 @@ hosts_subnet = tk.Label(np, width=20, height=5, border=4, relief=tk.GROOVE)
 hosts_subnet.place(x=40, y=200)
 
 nbr_of_subnets = tk.Label(np, width=20, height=5, border=4,relief=tk.GROOVE)
-nbr_of_subnets.place(x= 300 , y = 300)
+nbr_of_subnets.place(x= 300 , y = 200)
 
 host_range = tk.Label(np, width=20, height=5, border=4,relief=tk.GROOVE)
-host_range.place(x= 300 , y = 300)
+host_range.place(x= 550 , y = 200)
 
+broadcast = tk.Label(np, width=20, height=5, border=4,relief=tk.GROOVE)
+broadcast.place(x= 40 , y = 350)
+
+
+wildcard_mask = tk.Label(np, width=20, height=5, border=4,relief=tk.GROOVE)
+wildcard_mask.place(x= 300 , y = 350)
+
+
+cidr_notation = tk.Label(np, width=20, height=5, border=4,relief=tk.GROOVE)
+cidr_notation.place(x= 550 , y = 350)
 
 np.mainloop()
