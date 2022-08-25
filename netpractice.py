@@ -52,7 +52,7 @@ label.place(x=0, y=0)
 ip_add_position = tk.Label(np, text="Network Address Block", bg='gray38', fg="#fff")
 ip_add_position.place(x=100, y=50)
 
-ip_add = tk.Entry(np, border=2, justify = tk.CENTER)
+ip_add = tk.Entry(np, border=2, justify = tk.LEFT)
 ip_add.place(x = 300, y = 50)
 
 sub_net_text = tk.Label(np, text="Subnet Mask", bg="gray38", fg="#fff")
